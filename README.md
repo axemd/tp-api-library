@@ -40,13 +40,13 @@ Permet d'être lancé sans compilation et de relancer dynamiquement l'applicatio
 4) 
     1) Développer le modèle BookCopy
     2) Développer le DTO BookCopy
-    3) Développer la route GET /books-collection
-    4) Développer la route GET /books-collection/{id}
-    5) Développer la route POST /books-collection
-    6) Développer la route PATCH /books-collection/{id}
+    3) Développer la route GET /book-copies
+    4) Développer la route GET /book-copies/{id}
+    5) Développer la route POST /book-copies
+    6) Développer la route PATCH /book-copies/{id}
 5) 
     1) Mettre à jour la route DELETE /authors/{id} afin d'empêcher la suppression si un exemplaire d'un de ses livres est présent dans la bibliothèques
     2) Développer la route DELETE /books/{id} en empêchant la suppression du livre si un exemplaire est présent dans la bibliothèque
-    3) Développer la route DELETE /books-collections/{id}
+    3) Développer la route DELETE /book-copies/{id}
 6) Renvoyer la liste des livres de l'auteur sur la route GET /authors/{id}/books
-7) Renvoyer la liste des exemplaires du livre sur la route GET /books/{id}/books-collections
+7) Renvoyer la liste des exemplaires du livre sur la route GET /books/{id}/book-copies
