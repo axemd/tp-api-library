@@ -1,4 +1,4 @@
-enum BookCopyStatus {
+export enum BookCopyStatus {
     BROKE,
     BAD,
     NEUTRAL,

@@ -3,7 +3,7 @@ import sequelize from "../config/database"; // Connexion à la base de données
 import { Book } from "./book.model";
 
 export interface BookCopyAttributes {
-  id: number;
+  id?: number;
   bookId: number;
   available: boolean;
   status: number;
@@ -13,7 +13,7 @@ export class BookCopy
   extends Model<BookCopyAttributes>
   implements BookCopyAttributes
 {
-  public id!: number;
+  public id?: number;
   public bookId!: number;
   public available!: boolean;
   public status!: number;
