@@ -7,9 +7,8 @@ export enum BookCopyStatus {
     NEW
 }
 export interface BookCopyDTO {
-    
-    id: number;
+    id?: number;
     bookId: number;
     available: boolean;
-    status: BookCopyStatus;
+    state: BookCopyStatus;
 }

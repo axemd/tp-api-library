@@ -5,7 +5,7 @@ import { Book } from "../models/book.model";
 import { BookCopy } from "../models/bookCopy.model";
 import { BookService } from "./book.service";
 
-export class BookCopyCopyService {
+export class BookCopyService {
 
    readonly include =  {
     include: [
@@ -23,7 +23,7 @@ export class BookCopyCopyService {
   };
   public bookService = new BookService();
 
-  public async getAllBookCopys(): Promise<BookCopy[]> {
+  public async getAllBookCopies(): Promise<BookCopy[]> {
     return BookCopy.findAll(this.include);
   }
 
@@ -34,7 +34,7 @@ export class BookCopyCopyService {
   public async createBookCopy(
     bookId: number,
     available: boolean,
-    status: BookCopyStatus
+    state: BookCopyStatus
   ): Promise<BookCopy> {
     let book: Book | null = await this.bookService.getBookById(
       bookId
@@ -44,14 +44,14 @@ export class BookCopyCopyService {
       error.status = 404;
       throw error;
     }
-    return BookCopy.create({ bookId, available, status });
+    return BookCopy.create({ bookId, available, state });
   }
 
   public async updateBookCopy(
     id: number,
     bookId?: number,
     available?: boolean,
-    status?: BookCopyStatus
+    state?: BookCopyStatus
   ): Promise<BookCopy> {
     let bookCopy = await this.getBookCopyById(id);
     if (bookCopy === null) {
@@ -74,11 +74,13 @@ export class BookCopyCopyService {
         bookCopy.available = available;
       }
 
-      if (status !== undefined) {
-        bookCopy.status = status;
+      if (state !== undefined) {
+        bookCopy.state = state;
       }
 
       return bookCopy.save();
     }
   }
 }
+
+export const bookCopyService = new BookCopyService();

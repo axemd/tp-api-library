@@ -6,7 +6,7 @@ export interface BookCopyAttributes {
   id?: number;
   bookId: number;
   available: boolean;
-  status: number;
+  state: number;
 }
 
 export class BookCopy
@@ -16,7 +16,7 @@ export class BookCopy
   public id?: number;
   public bookId!: number;
   public available!: boolean;
-  public status!: number;
+  public state!: number;
 }
 
 BookCopy.init(
@@ -28,14 +28,15 @@ BookCopy.init(
     },
     bookId: {
       type: "INTEGER",
-      allowNull: false
+      allowNull: false,
+      field: "book_id",
     },
     available: {
       type: "BOOLEAN",
       allowNull: false,
       defaultValue: true
     },
-    status: {
+    state: {
       type: "INTEGER",
       allowNull: false,
       defaultValue: 5
