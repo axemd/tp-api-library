@@ -1,6 +1,7 @@
 import { Model, DataTypes } from "sequelize";
 import sequelize from "../config/database"; // Connection à la base de données
 import { Author } from "./author.model";
+import { BookCopy } from "./bookCopy.model";
 
 export interface BookAttributes {
   id?: number;
@@ -9,6 +10,7 @@ export interface BookAttributes {
   authorId: number;
   isbn: string;
   author?: Author;
+  copies?: BookCopy[];
 }
 
 export class Book extends Model<BookAttributes> implements BookAttributes {
@@ -18,6 +20,7 @@ export class Book extends Model<BookAttributes> implements BookAttributes {
   public authorId!: number;
   public isbn!: string;
   public author?: Author;
+  public copies?: BookCopy[];
 }
 
 Book.init(

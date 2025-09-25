@@ -49,3 +49,4 @@ BookCopy.init(
 );
 
 BookCopy.belongsTo(Book, { foreignKey: 'bookId', as: 'book' });
+Book.hasMany(BookCopy, { foreignKey: 'bookId', as: 'copies' });

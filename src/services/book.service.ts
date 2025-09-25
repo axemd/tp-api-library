@@ -1,7 +1,9 @@
 import { CustomError } from "../middlewares/errorHandler";
 import { Author } from "../models/author.model";
 import { Book } from "../models/book.model";
+import { BookCopy } from "../models/bookCopy.model";
 import { AuthorService } from "./author.service";
+import { bookCopyService } from "./bookCopy.service";
 
 export class BookService {
   public authorService = new AuthorService();
@@ -82,6 +84,16 @@ export class BookService {
       }
       return book.save();
     }
+  }
+
+  public async deleteBook(id: number): Promise<void> {
+    let countCopies = await BookCopy.findAndCountAll({ where: { bookId: id } });
+    if(countCopies.count > 0) {
+      let error: CustomError = new Error("Cannot delete book with associated copies");
+      error.status = 409;
+      throw error;
+    }
+    await Book.destroy({ where: { id } });
   }
 }
 
