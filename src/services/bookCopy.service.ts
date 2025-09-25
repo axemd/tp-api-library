@@ -55,8 +55,6 @@ export class BookCopyService {
     ): Promise<BookCopy> {
         let bookCopy = await this.getBookCopyById(id);
         if (bookCopy === null) {
-            // Cette erreur pourrait être levée directement dans le contrôleur pour garder une cohérence de code
-            // Possibilité de gérer les erreurs dans le contrôleur ou le service selon les choix de
             let error: CustomError = new Error(`BookCopy ${id} not found`);
             error.status = 404;
             throw error;

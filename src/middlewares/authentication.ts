@@ -10,11 +10,11 @@ const RIGHTS_BY_USER: Record<string, string[] | "*"> = {
         "create:author", "update:author",
         "create:book", "update:book",
         "create:bookCopy", "update:bookCopy",
-        "delete:bookCopy",
+        "delete:bookCopy"
     ],
     utilisateur: [
         "read",
-        "create:book",
+        "create:book"
     ],
 };
 
