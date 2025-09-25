@@ -81,6 +81,10 @@ export class BookCopyService {
       return bookCopy.save();
     }
   }
+
+  public async deleteBookCopy(id: number): Promise<void> {
+    await BookCopy.destroy({ where: { id } });
+  }
 }
 
 export const bookCopyService = new BookCopyService();

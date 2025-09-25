@@ -224,6 +224,29 @@
 						}
 					}
 				}
+			},
+			"delete": {
+				"operationId": "DeleteBookCopy",
+				"responses": {
+					"204": {
+						"description": "No content"
+					}
+				},
+				"tags": [
+					"BookCopys"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
 			}
 		},
 		"/books": {
