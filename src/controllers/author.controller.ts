@@ -43,7 +43,13 @@ export class AuthorController extends Controller {
   // Supprime un auteur par ID
   @Delete("{id}")
   public async deleteAuthor(@Path() id: number): Promise<void> {
-    await authorService.deleteAuthor(id);
+    try {
+      await authorService.deleteAuthor(id);
+    } catch (SequelizeForeignKeyConstraintError) {
+      let error: CustomError = new Error("Cannot delete author with associated books");
+      error.status = 409;
+      throw error;
+    }
   }
 
   // Met à jour un auteur par ID
